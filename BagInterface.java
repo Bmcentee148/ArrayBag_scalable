@@ -21,7 +21,7 @@ public interface BagInterface<T> {
 	/** Adds an item to the bag.
 		@param anEntry The item to be added to the bag.
 		@return True if the addition was successful, else false. */
-	public boolean add(T Entry);
+	public boolean add(T anEntry);
 
 	/** Removes a random item from the bag.
 		@return The object removed from the bag. */
