@@ -6,18 +6,14 @@
 
 public class ArrayBag<T> implements BagInterface<T>{
 	
-	//DEFINED CONSTANTS
-	private final static int DEFAULT_SIZE = 10;
+	
 	
 	//DATA MEMBERS
 	private T[] bag; // used to hold the entries
 	private int numOfEntries;
-
-	public ArrayBag() {
-		@SuppressWarnings("unchecked")
-		T[] temp = (T[])new Object[DEFAULT_SIZE];
-		bag = temp;
-		numOfEntries = 0;
+	//avoid access to default contr.
+	private ArrayBag() {
+		
 	}
 
 	public ArrayBag(int max_capac) {
@@ -29,10 +25,17 @@ public class ArrayBag<T> implements BagInterface<T>{
 
 	public boolean add(T anEntry) {
 		boolean status = false;
-		if((!this.isFull()) && anEntry != null) {
-			bag[numOfEntries] = anEntry;
-			status = true;
-			numOfEntries++;
+		@SuppressWarnings("unchecked")
+		T[] tempBag = (T[])new Object[2 *numOfEntries];
+		if(! (anEntry == null)){
+			if(this.atCapac()){
+				System.arraycopy(bag,0,tempBag,0,numOfEntries);
+				bag = tempBag;
+			}
+			
+				bag[numOfEntries] = anEntry;
+				status = true;
+				numOfEntries++;
 		}
 		return status;
 	}
@@ -48,7 +51,7 @@ public class ArrayBag<T> implements BagInterface<T>{
 	}
 
 	public boolean isFull() {
-		return numOfEntries == bag.length;
+		return false;
 	}
 
 	public T remove() {
@@ -108,6 +111,10 @@ public class ArrayBag<T> implements BagInterface<T>{
 
 	public boolean isEmpty() {
 		return numOfEntries == 0;
+	}
+
+	private boolean atCapac() {
+		return this.numOfEntries == bag.length;
 	}
 
 }
