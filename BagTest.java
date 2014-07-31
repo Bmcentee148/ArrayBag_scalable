@@ -1,3 +1,4 @@
+package ArrayBag;
 /** This will test the Bag implementations */
 
 public class BagTest {

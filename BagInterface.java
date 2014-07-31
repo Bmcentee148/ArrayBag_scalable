@@ -1,3 +1,4 @@
+package ArrayBag;
 /** 
 	An interface to describe the operations of a bag of objects
 	@author Brian McEntee

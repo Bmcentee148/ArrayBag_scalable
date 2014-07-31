@@ -1,3 +1,4 @@
+package ArrayBag;
 /** This class will implement the {@code BagInterface} using
 	an array. The array will be of a fixed size and once full, 
 	the bag will no longer be able to accept more items.
@@ -11,9 +12,10 @@ public class ArrayBag<T> implements BagInterface<T>{
 	//DATA MEMBERS
 	private T[] bag; // used to hold the entries
 	private int numOfEntries;
-	//avoid access to default contr.
+	
+	@SuppressWarnings("unused")
 	private ArrayBag() {
-		
+		//access to default constructor is forbidden
 	}
 
 	public ArrayBag(int max_capac) {
@@ -64,7 +66,6 @@ public class ArrayBag<T> implements BagInterface<T>{
 	}
 
 	public T remove(T anEntry) {
-		int swapIndex = -1;
 		T removedEntry = null;
 		boolean found = false;
 		
