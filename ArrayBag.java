@@ -66,14 +66,15 @@ public class ArrayBag<T> implements BagInterface<T>{
 	public T remove(T anEntry) {
 		int swapIndex = -1;
 		T removedEntry = null;
+		boolean found = false;
 		
-		for (int i = 0; i < numOfEntries; i++) {
+		for (int i = 0; ! found && (i < numOfEntries); i++) {
 			if(bag[i].equals(anEntry)) {
 				numOfEntries--;
 				removedEntry= bag[i];
 				bag[i] = bag[numOfEntries];
 				bag[numOfEntries] = removedEntry;
-				break;
+				found = true;
 			}
 		}
 
@@ -82,10 +83,9 @@ public class ArrayBag<T> implements BagInterface<T>{
 
 	public boolean contains(T anEntry) {
 		boolean isContained = false;
-		for(int i = 0; i < numOfEntries; i++) {
+		for(int i = 0; (! isContained) && (i < numOfEntries); i++) {
 			if(bag[i].equals(anEntry)) {
 				isContained = true;
-				break;
 			}
 		}
 		return isContained;
